@@ -1,0 +1,88 @@
+[
+  {
+    "input": {
+      "now": 10,
+      "request": {
+        "subject": "demo",
+        "action": "read",
+        "resource": "report"
+      },
+      "grants": []
+    },
+    "expected": {
+      "allowed": false,
+      "reason": "no-active-grant"
+    }
+  },
+  {
+    "input": {
+      "now": 10,
+      "request": {
+        "subject": "demo",
+        "action": "read",
+        "resource": "report"
+      },
+      "grants": [
+        {
+          "subject": "demo",
+          "action": "read",
+          "resource": "report",
+          "expires": 11,
+          "effect": "allow"
+        }
+      ]
+    },
+    "expected": {
+      "allowed": true,
+      "reason": "active-grant"
+    }
+  },
+  {
+    "input": {
+      "now": 10,
+      "request": {
+        "subject": "demo",
+        "action": "read",
+        "resource": "report"
+      },
+      "grants": [
+        {
+          "subject": "demo",
+          "action": "read",
+          "resource": "report",
+          "expires": 10,
+          "effect": "allow"
+        }
+      ]
+    },
+    "expected": {
+      "allowed": false,
+      "reason": "no-active-grant"
+    }
+  },
+  {
+    "input": {
+      "now": 100,
+      "request": {
+        "subject": "research-agent",
+        "action": "export",
+        "resource": "report",
+        "approved": false
+      },
+      "grants": [
+        {
+          "subject": "research-agent",
+          "action": "export",
+          "resource": "report",
+          "expires": 200,
+          "effect": "allow",
+          "approval_required": true
+        }
+      ]
+    },
+    "expected": {
+      "allowed": false,
+      "reason": "approval-required"
+    }
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "now": 100,
+  "request": {
+    "subject": "research-agent",
+    "action": "export",
+    "resource": "report",
+    "approved": false
+  },
+  "grants": [
+    {
+      "subject": "research-agent",
+      "action": "export",
+      "resource": "report",
+      "expires": 200,
+      "effect": "allow",
+      "approval_required": true
+    }
+  ]
+}
