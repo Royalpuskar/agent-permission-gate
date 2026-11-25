@@ -48,6 +48,18 @@ python -m unittest test_preflight -v
 
 The offline preflight checks ordered dependencies, permission decisions and a caller-supplied estimated budget. The example intentionally exits with status 1 because approval, dependency and budget checks block three steps. No tools are executed, and approval fields in proposed steps are ignored. This is a planning aid, not an enforcement boundary or measured cost guarantee.
 
+## Agent control plane prototype
+
+- [Workflow graph editor](https://royalpuskar.github.io/agent-permission-gate/workflow.html): edit and export dependency graphs (deployment may lag).
+- `orchestrator.py`: sequential execution across registered agent gateways; stops dependent steps on failure. No automatic retries or rollback.
+- `audit.py`: hash-chain verification against an independently retained digest; not immutable storage.
+- `knowledge.py`: local lexical retrieval and illustrative injection flags, not comprehensive prompt-injection protection.
+- `policy_draft.py`: approval-required grant drafts for human review.
+- `local_model.py`: optional localhost Ollama adapter; model installation is separate.
+- `mcp_server.py`: optional read-only MCP example server; install the official SDK with `pip install mcp` and run `python mcp_server.py`. It exposes only the bundled preflight example, not a universal interception gateway.
+
+Run standard-library tests with `python -m unittest discover -v`. Optional service integrations require separate integration testing. All modules are research prototypes; no isolation, certification or production readiness is claimed.
+
 ## Problem and approach
 
 Evaluate typed automation capabilities with default-deny access. This project makes the decision process inspectable through editable scenarios, explicit outputs and reproducible examples. It is an independent repository with a browser application and a Python reference implementation.
