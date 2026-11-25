@@ -39,6 +39,15 @@ print(gateway.dispatch("read_docs", {}))
 
 The dispatcher maps tool names to trusted action/resource metadata. Unknown tools are denied. This is a synchronous local integration example, not an MCP server or an isolation boundary. Handlers must validate their own arguments, and approvals must be provided by trusted application code.
 
+## Inspect a workflow before execution
+
+```sh
+python preflight.py workflow_demo.json
+python -m unittest test_preflight -v
+```
+
+The offline preflight checks ordered dependencies, permission decisions and a caller-supplied estimated budget. The example intentionally exits with status 1 because approval, dependency and budget checks block three steps. No tools are executed, and approval fields in proposed steps are ignored. This is a planning aid, not an enforcement boundary or measured cost guarantee.
+
 ## Problem and approach
 
 Evaluate typed automation capabilities with default-deny access. This project makes the decision process inspectable through editable scenarios, explicit outputs and reproducible examples. It is an independent repository with a browser application and a Python reference implementation.
