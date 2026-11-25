@@ -12,6 +12,16 @@ GitHub Pages deployment was confirmed during portfolio setup.
 
 Evaluate typed automation capabilities with default-deny access.
 
+## Try the 30-second agent replay
+
+```sh
+git clone https://github.com/Royalpuskar/agent-permission-gate.git
+cd agent-permission-gate
+python replay_demo.py
+```
+
+Six synthetic requests demonstrate normal access, approval requirements, explicit denial, unknown actions and expired grants. No model, API key or external service is needed. The replay exits nonzero if a decision differs from its expected result; add `--json` for machine-readable output. No actual email, file deletion or secret access occurs.
+
 ## Problem and approach
 
 Evaluate typed automation capabilities with default-deny access. This project makes the decision process inspectable through editable scenarios, explicit outputs and reproducible examples. It is an independent repository with a browser application and a Python reference implementation.
