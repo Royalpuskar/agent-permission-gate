@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "royalpuskar-permission-gate"
+version = "0.1.0"
+description = "Local agent permission and workflow inspection research toolkit"
+requires-python = ">=3.10"
+readme = "README.md"
+license = {file = "LICENSE"}
+
+[project.urls]
+Repository = "https://github.com/Royalpuskar/agent-permission-gate"
+
+[project.scripts]
+permission-preflight = "preflight:main"
+
+[tool.setuptools]
+py-modules = ["engine", "guard", "tool_gateway", "preflight", "audit", "knowledge", "orchestrator", "policy_draft", "local_model"]
