@@ -1,0 +1,55 @@
+{
+  "subject": "agent",
+  "now": 100,
+  "budget": "2.00",
+  "grants": [
+    {
+      "subject": "agent",
+      "action": "read",
+      "resource": "docs",
+      "expires": 200,
+      "effect": "allow"
+    },
+    {
+      "subject": "agent",
+      "action": "send",
+      "resource": "report",
+      "expires": 200,
+      "effect": "allow",
+      "approval_required": true
+    }
+  ],
+  "plan": [
+    {
+      "id": "research",
+      "action": "read",
+      "resource": "docs",
+      "cost": "0.50"
+    },
+    {
+      "id": "publish",
+      "action": "send",
+      "resource": "report",
+      "depends_on": [
+        "research"
+      ],
+      "cost": "0.20",
+      "approved": true
+    },
+    {
+      "id": "followup",
+      "action": "read",
+      "resource": "docs",
+      "depends_on": [
+        "publish"
+      ],
+      "cost": "0.10"
+    },
+    {
+      "id": "large-job",
+      "action": "read",
+      "resource": "docs",
+      "cost": "3.00"
+    }
+  ]
+}
