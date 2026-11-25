@@ -1,5 +1,22 @@
 # Permission Gate
 
+**Inspect an agent workflow before execution. Gate tool calls. Verify the resulting audit trail.**
+
+[![Control plane tests](https://github.com/Royalpuskar/agent-permission-gate/actions/workflows/control-plane-tests.yml/badge.svg)](https://github.com/Royalpuskar/agent-permission-gate/actions/workflows/control-plane-tests.yml)
+
+## Start here
+
+```sh
+git clone https://github.com/Royalpuskar/agent-permission-gate.git
+cd agent-permission-gate
+python launch_demo.py
+```
+
+The integrated synthetic demo permits a research step, blocks an unapproved publication step, and verifies the resulting audit chain. No external service or model required. This is a local research prototype, not a sandbox or certified security boundary.
+
+[Contribute a reproducible test case](https://github.com/Royalpuskar/agent-permission-gate/issues/new)
+
+
 <!-- portfolio-website:start -->
 ## Website
 
