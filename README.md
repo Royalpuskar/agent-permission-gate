@@ -22,6 +22,23 @@ python replay_demo.py
 
 Six synthetic requests demonstrate normal access, approval requirements, explicit denial, unknown actions and expired grants. No model, API key or external service is needed. The replay exits nonzero if a decision differs from its expected result; add `--json` for machine-readable output. No actual email, file deletion or secret access occurs.
 
+## Guard your own Python tools
+
+```python
+from guard import Guard, PermissionDenied
+from tool_gateway import Tool, ToolGateway
+
+policy = [dict(subject="agent", action="read", resource="docs",
+               expires=200, effect="allow")]
+guard = Guard("agent", policy, clock=lambda: 100)
+gateway = ToolGateway(guard, {
+    "read_docs": Tool("read", "docs", lambda: "Public documentation")
+})
+print(gateway.dispatch("read_docs", {}))
+```
+
+The dispatcher maps tool names to trusted action/resource metadata. Unknown tools are denied. This is a synchronous local integration example, not an MCP server or an isolation boundary. Handlers must validate their own arguments, and approvals must be provided by trusted application code.
+
 ## Problem and approach
 
 Evaluate typed automation capabilities with default-deny access. This project makes the decision process inspectable through editable scenarios, explicit outputs and reproducible examples. It is an independent repository with a browser application and a Python reference implementation.
